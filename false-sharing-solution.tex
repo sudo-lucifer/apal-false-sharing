@@ -11,13 +11,23 @@
 \usepackage{graphicx}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{natbib}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
     filecolor=magenta,      
     urlcolor=cyan,
+    pdfborder=white,
+    citecolor=black,
     pdfpagemode=FullScreen,
+}
+
+\renewcommand{\bibsection}{\chapter*{Reference}}
+
+\newcommand{\remark}[3]{%
+    {\colorbox{#2}{\sffamily\scriptsize\bfseries\textcolor{white}{#1}}}
+    {\textbf{\textcolor{#2}{#3}}}
 }
 
 \renewcommand\qedsymbol{$\blacksquare$}
@@ -35,14 +45,14 @@
 \hrule \vspace{.10in}}
 \renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
 
-\newcommand{\myname}{Krittin Nisunarat}
+\newcommand{\myname}{P. Archer, N. Krittin}
 \newcommand{\mySubject}{ICCS315 Applied Algorithms}
 
 \setlength{\parindent}{20pt}
 \setlength{\parskip}{5pt plus 1pt}
  
 \pagestyle{fancyplain}
-\lhead{\fancyplain{}{\textbf{Final}}}      % Note the different brackets!
+\lhead{\fancyplain{}{\textbf{False Sharing}}}      % Note the different brackets!
 \rhead{\fancyplain{}{\myname}}
 \chead{\fancyplain{}{\mySubject}}
 
@@ -75,5 +85,8 @@
 \input{theoretical-solution.tex}
 
 
-% add bib
+% \citet{Jacobson1999Towards} states that \ldots
+
+\bibliography{reference}
+\bibliographystyle{plainnat}
 \end{document}
