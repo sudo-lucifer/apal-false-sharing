@@ -1,0 +1,79 @@
+% You should title the file with a .tex extension (hw1.tex, for example)
+\documentclass[a4paper, 12pt]{report}
+
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{minted}
+\usepackage{amsthm}        
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdfpagemode=FullScreen,
+}
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+\graphicspath{ {./pictures} }
+
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\question}[2] {\vspace{.25in} \hrule\vspace{0.5em}
+\noindent{\bf #1: #2} \vspace{0.5em}
+\hrule \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+
+\newcommand{\myname}{Krittin Nisunarat}
+\newcommand{\mySubject}{ICCS315 Applied Algorithms}
+
+\setlength{\parindent}{20pt}
+\setlength{\parskip}{5pt plus 1pt}
+ 
+\pagestyle{fancyplain}
+\lhead{\fancyplain{}{\textbf{Final}}}      % Note the different brackets!
+\rhead{\fancyplain{}{\myname}}
+\chead{\fancyplain{}{\mySubject}}
+
+\title{
+
+	{\includegraphics[width=80mm,scale=0.5]{MUIC_Logo_Eng_Center.png}} \\
+	{\textbf{\mySubject}}\\
+	{\large False Sharing}\\
+}
+\author{
+	{\textbf{Written by}} \\ 
+	{Archer N. Phillips, Krittin Nisunarat 6280782} \\
+}
+\date{9 April 2023}
+\thispagestyle{plain}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Cache Protocol}
+\input{cache-protocol.tex}
+
+\chapter{Existing Solution}
+\input{existing-solution.tex}
+
+
+\chapter{Theoretical Solution}
+\input{theoretical-solution.tex}
+
+
+% add bib
+\end{document}
