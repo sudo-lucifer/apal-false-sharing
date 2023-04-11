@@ -64,3 +64,39 @@ The invariant is similar to how rust compiler handle concurrency with ownership.
 is either the last value written by the previous writing core (the previous writer-reader).
 
 \section{Cache Coherence Protocols}
+To understand cache coherence protocol, it is a set of rules that ensures that the data in different memories that share a common memory is kept consistent.
+There are a few important components that we need to understand for cache coherence protocol in a multicore system.
+
+\subsection{System Components}
+A core is a processing unit with a single thread of execution that executes some multi-threaded program consisting of multiple sequence of instructions, each core runs one sequence of instructions (\citealp*{hay2012mesif}).
+Some instructions are memory operations which either read from memory locations or write to it. Each core handles memory operations using associated finite state machine (FSM) called cache controller which encodes the rules of cache coherence protocol designed to achieve coherence
+as shown in figure \ref*{fig:system_component}.
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth,scale=0.5]{system_component.png}
+        \caption{\label{fig:system_component} System component with cache controller and protocol provided by \citealp{hay2012mesif}}
+\end{figure}
+\newpage
+Memory operation enables the local cache controller to check if the local cache has the correct permissions to service the memory operation from the cache. The permissions are encoded in cache states which helps to
+satisfy the mentioned 2 invariants (SWMR and Data-Value). That means that if the location has the right permission, the memory operation hits in the cache and 
+can be serviced by the local cache without communicating with other caches. Otherwise, the cache is missed adn the controller issue a memory request for the cache block requesting to write or read.
+
+\subsection{Interconnection Network}
+This component is the part that joins all local caches together in multiple cores adn the controller of each local cache. Network nodes can address other network nodes with virtual address to exchange messages and data inside a machine.
+Also, the cache coherence protocol uses messages and send data through the interconnection network to service memory while ensuring that the system is consistent and write-read memory across all cores.
+There are 3 different types of interconnection network with a different benefits and drawbacks.
+\begin{enumerate}
+        \item Totally-ordered: all nodes receive all messages in the same order.
+        \item Point-to-Point: message sent between two nodes are delivered in order
+        \item Unordered: no guarantee on the ordering of messages sent through them.
+\end{enumerate}
+In the real world, two main types are considered in most and current architecture which are
+\begin{enumerate}
+        \item Bus based interconnection: Nodes communicate over a shared medium which is a set of wires.
+        \item Point-to-point interconnection: nodes are linked together directly into topology. A node can send message
+                only yo nodes that they are linked together.
+\end{enumerate}
+With bus interconnection, it guarantees that the message and data are broadcasted with order with limit bandwidth which can cause bottleneck.
+Point-to-point is more scalable as it has lower latency and higher bandwidth than bus interconnection.
+
