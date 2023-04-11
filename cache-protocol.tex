@@ -65,7 +65,9 @@ is either the last value written by the previous writing core (the previous writ
 
 \section{Cache Coherence Protocols}
 To understand cache coherence protocol, it is a set of rules that ensures that the data in different memories that share a common memory is kept consistent.
-There are a few important components that we need to understand for cache coherence protocol in a multicore system.
+There are a few important components that we need to understand for cache coherence protocol in a multicore system. In particular, there are also two well-know categories of cache coherence protocols which are directories and snooping.
+Snooping cache protocol distributes the coherence information around the system and make cache controllers responsible for maintaining information about copies of memory locations for which they have special privileges.
+Directory-based cache protocol depends on a single place to store information about a cache line. each address is associated with a given location where the coherence information is maintained while the information may be distributed for difference addresses.
 
 \subsection{System Components}
 A core is a processing unit with a single thread of execution that executes some multi-threaded program consisting of multiple sequence of instructions, each core runs one sequence of instructions (\citealp*{hay2012mesif}).
