@@ -1,0 +1,13 @@
+\section{Adjustable Block Size Coherent Cache}
+
+It is easy to see that the amount of false sharing proportional the cache block size. As, the cache block size gets bigger the chances of false sharing will increas due to the fact that a bigger block size can store more data, thus more liky that two processors that two different data from the size cache block, and vice versa.
+False sharing can be reduce for large block size by using padding as stated earlier, but this comes with a disadvantage of haveing unusable space.
+To fix this problem we suggest to use an adjustable block size coherent cache as stated in \citealp*{dubnicki1992adjustable}.
+\citealp*{dubnicki1992adjustable} stated a way of adjusting the block size by merging chahe blocks to increas it's size and spliting cache block to decres it's size.
+This may eleminate the space problem from padding, but the trade off of spatial locality still remains. 
+
+\section{Group and Transpose with Adjustable Block Size Coherent Cache}\label{sec:cobination}
+To eleminate the spatial locality problem that adjacenting the block size may have in reduceing
+fase sharing. It is better to use this method in conjunction with other methods of reducing false sharing such as, the group and tranpose method that was stated earlier. Recall that grop and tranpose reduces false sharing by grouping data that are used by the same processor togather and pad the data that dose not fill the cache block. We can improves both false sharing and spatial locality by grouping all the data that is going to be access by the same process togather and putting in the smallest cache block that can contain the data group.
+This can be taken one step further by also padding the data group if it doesn't fill the cache block.
+
